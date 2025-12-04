@@ -1,0 +1,16 @@
+.product__container {
+    padding: 1em;
+
+    border: 1px solid black;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}

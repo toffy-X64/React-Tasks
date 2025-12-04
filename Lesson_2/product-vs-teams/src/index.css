@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  font-family: 'Consolas';
+
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column;
+}
+
+main {
+  flex: 1;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1280px;
+}
