@@ -1,0 +1,51 @@
+.period-wrapper {
+    padding: 1em 0 0.9em 0.9em;
+
+    display: flex;
+    gap: 2em;
+}
+
+.period-time-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.period-time-wrapper .period-start {
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.period-time-wrapper .period-duration {
+    font-size: 0.9em;
+}
+
+.period-data-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.period-data-wrapper .period-name {
+    font-size: 1.25em;
+}
+
+.period-data-wrapper .period-location,
+.period-data-wrapper .period-teacher {
+    font-size: 0.9em;
+}
+
+@media (max-width: 470px) {
+    .period-wrapper {
+        flex-direction: column;
+        gap: 0.5em;
+    }
+
+    .period-time-wrapper .period-start {
+        font-size: 0.95em;
+    }
+
+    .period-data-wrapper .period-name {
+        font-size: 1.15em;
+    }
+}
