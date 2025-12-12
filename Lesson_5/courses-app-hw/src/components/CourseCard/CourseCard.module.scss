@@ -1,0 +1,76 @@
+.card {
+    padding: 20px;
+    border-radius: 16px;
+    background: #fff;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    position: relative;
+    border: 3px solid transparent;
+    cursor: pointer;
+
+    &:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+}
+
+.free {
+    border-color: #10b981;
+}
+
+.paid {
+    border-color: #e03bf6;
+}
+
+.levelBeginner {
+    background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+}
+
+.levelIntermediate {
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+}
+
+.levelAdvanced {
+    background: linear-gradient(135deg, #fce7f3, #f9a8d4);
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.level {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.duration {
+    opacity: 0.8;
+}
+
+.new::after {
+    content: "NEW";
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #ff007f;
+    color: #fff;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    box-shadow: 0 0 10px rgba(255, 0, 128, 0.6);
+}
+
+.free::before {
+    content: "FREE";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    background: #10b981;
+    color: #fff;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+}
