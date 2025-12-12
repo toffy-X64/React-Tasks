@@ -1,0 +1,60 @@
+.panel {
+    padding: 20px;
+ 
+    h2 {
+        margin-bottom: 20px;
+    }
+}
+ 
+/* 4 колонки: email | role | status | action */
+.headerRow,
+.userRow{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+}
+ 
+ 
+ 
+/* Хедери */
+.headerItem {
+    font-weight: 700;
+    padding: 12px 0;
+    border-bottom: 2px solid #ccc;
+}
+ 
+.cell {
+    padding: 10px 0;
+    border-bottom: 1px solid #e6e6e6;
+}
+ 
+/* Статуси */
+.active {
+    color: #2c7a2c;
+    font-weight: 600;
+}
+ 
+.blocked {
+    color: #c0392b;
+    font-weight: 600;
+}
+ 
+/* Кнопка */
+.actionBtn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background: #2d2d2d;
+    color: white;
+ 
+    &:hover {
+        background: #444;
+    }
+ 
+    &:disabled {
+        background: #bbb;
+        cursor: not-allowed;
+    }
+}

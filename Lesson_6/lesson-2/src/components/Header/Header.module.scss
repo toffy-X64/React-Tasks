@@ -1,0 +1,46 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    background: #1a1a1a;
+    color: white;
+}
+ 
+ 
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+ 
+ 
+.loginBtn,
+.logoutBtn {
+    background: #4a90e2;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+ 
+ 
+    &:hover {
+        background: #357ab8;
+    }
+}
+ 
+.actionContainer {
+    display: flex;
+    gap: 0.5em;
+} 
+
+.userWrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+ 
+ 
+.email {
+    font-weight: bold;
+}
