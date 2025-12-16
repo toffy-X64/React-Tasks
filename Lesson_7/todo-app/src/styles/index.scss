@@ -1,0 +1,14 @@
+@forward './_variables.scss';
+@forward './_base.scss';
+@forward './_mixins.scss';
+
+main {
+    margin-top: 20px;
+    padding: 20px;
+}
+ 
+ 
+.info {
+    font-size: 18px;
+    color: #555;
+}

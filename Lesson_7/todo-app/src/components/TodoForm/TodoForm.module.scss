@@ -1,0 +1,26 @@
+.form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+
+    input {
+        width: 100%;
+
+        padding: 1em;
+        border: none;
+        border-radius: 10px;
+    }
+}
+
+.add-btn {
+    background-color: #2053ed;
+    color: white;
+    padding: 0.65em;
+
+    border: none;
+    border-radius: 10px;
+
+    font-size: 1.1em;
+    cursor: pointer;
+}

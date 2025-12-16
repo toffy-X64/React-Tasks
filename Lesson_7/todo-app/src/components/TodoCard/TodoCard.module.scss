@@ -1,0 +1,31 @@
+.card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 1em;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.card-section {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.remove-btn {
+    padding: 0.3em 0.5em;
+    color: white;
+    font-size: 1.15em;
+
+    border: none;
+    border-radius: 5px;
+    background-color: #f52828;
+
+    cursor: pointer;
+}
+
+.crossed {
+    text-decoration: line-through;
+}

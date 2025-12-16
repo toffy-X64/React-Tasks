@@ -1,0 +1,19 @@
+.todo-list {
+    border-radius: 10px;
+    background-color: #ebe9e9;
+
+    padding: 2em 0.5em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+.wrapper {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
