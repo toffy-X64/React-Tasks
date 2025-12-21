@@ -1,0 +1,47 @@
+.products {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+h2 {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-weight: 500;
+    color: #555;
+}
+
+h2:first-child {
+    color: #222;
+}
+
+.error {
+    color: #e74c3c;
+    background: rgba(231, 76, 60, 0.1);
+    padding: 14px;
+    border-radius: 10px;
+}
+
+input {
+    width: 100%;
+    max-width: 420px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    outline: none;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+
+    &:focus {
+        border-color: #111;
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+    }
+}
+
+h1 {
+    margin-bottom: 16px;
+    font-size: 32px;
+    font-weight: 700;
+    color: #111;
+}

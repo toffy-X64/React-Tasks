@@ -1,0 +1,8 @@
+@forward './_variables.scss';
+@forward './_base.scss';
+@forward './_mixins.scss';
+
+main {
+    padding: 20px;
+    flex: 1;
+}
