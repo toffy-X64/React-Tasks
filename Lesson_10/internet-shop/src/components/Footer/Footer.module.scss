@@ -1,0 +1,46 @@
+@use "../../styles/variables.scss" as *;
+
+.footer {
+    background-color: $color-bg;
+    border-top: 1px solid $color-border;
+    margin-top: 40px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+}
+
+.logo {
+    font-size: 18px;
+    font-weight: 700;
+    color: $color-primary;
+}
+
+.links {
+    display: flex;
+    gap: 20px;
+
+    a {
+        text-decoration: none;
+        font-size: 14px;
+        color: $color-text;
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: $color-primary;
+        }
+    }
+}
+
+.copy {
+    font-size: 13px;
+    color: gray;
+}

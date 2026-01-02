@@ -1,0 +1,27 @@
+.wrapper {
+    width: 100%;
+    position: relative;
+
+    padding-top: 1em;
+}
+
+.wrapper input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: #f0f0f0;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: black;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s ease;
+
+    &::placeholder {
+        color: #9ca3af;
+    }
+
+    &:focus {
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+    }
+}

@@ -1,0 +1,60 @@
+.adminHome {
+    padding-top: 24px;
+}
+
+.statista {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.statistaBlock {
+    background: #1f1f2b;
+    border-radius: 14px;
+    padding: 20px;
+    min-height: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: 0.25s ease;
+    cursor: default;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+}
+
+.title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #b0b0c3;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.value {
+    font-size: 32px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+.addNewProductButton {
+    display: block;
+    text-align: center;
+    padding: 8px 14px;
+    border-radius: 8px;
+    background: #3b82f6;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    transition: 0.2s;
+
+    margin-bottom: 1em;
+
+    &:hover {
+        background: #2563eb;
+    }
+}

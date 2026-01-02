@@ -1,0 +1,29 @@
+@use "./_mixins.scss" as *;
+@use "./_variables.scss" as *;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Consolas';
+}
+
+.app {
+    @include flex-center;
+    
+    min-height: 100vh;
+    gap: 20px;
+}
+
+.container {
+    @include container;
+}
+
+.page {
+    display: flex;
+    justify-content: center;
+    background-color: $color-bg;
+}
