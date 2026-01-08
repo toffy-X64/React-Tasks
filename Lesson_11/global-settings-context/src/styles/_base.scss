@@ -1,0 +1,50 @@
+@use "./_mixins.scss" as *;
+@use "./_variables.scss" as *;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Consolas';
+}
+
+.app {
+    @include flex-center;
+    
+    min-height: 100vh;
+    gap: 20px;
+}
+
+.fz-lg {
+    font-size: 22px;
+}
+
+.fz-md {
+    font-size: 18px;
+}
+
+.fz-sm {
+    font-size: 14px;
+}
+
+.app.theme-light {
+    color: $color-text;
+    background-color: $color-bg;
+}
+
+.app.theme-dark {
+    color: $color-text-dark;
+    background-color: $color-bg-dark;
+}
+
+.container {
+    @include container;
+}
+
+.page {
+    display: flex;
+    justify-content: center;
+}
