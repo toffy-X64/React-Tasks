@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
-import { Navigate, NavLink, useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
+
 import styles from './AdminEdit.module.scss';
-import useProduct from '../../../hooks/products/useProduct';
-import useCategories from '../../../hooks/categories/useCategories';
-import useEditProduct from '../../../hooks/products/useEditProduct';
-import AdminProductForm from '../../../components/Admin/AdminProductForm/AdminProductForm';
+
+import useProduct from '@hooks/products/useProduct';
+import useCategories from '@hooks/categories/useCategories';
+import useEditProduct from '@hooks/products/useEditProduct';
+
+import AdminProductForm from '@components/Admin/AdminProductForm/AdminProductForm';
 
 const AdminEdit = () => {
     const { id } = useParams();

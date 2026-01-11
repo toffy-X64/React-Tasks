@@ -1,12 +1,15 @@
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+
 import styles from './AdminHome.module.scss';
 
-import useProductsStatista from '../../../hooks/products/useProductsStatista';
-import CategoryFilter from '../../../components/Catalog/CategoryFilter/CategoryFilter';
-import { useState } from 'react';
-import AdminProductsGrid from '../../../components/Admin/AdminProductsGrid/AdminProductsGrid';
-import Pagination from '../../../components/Pagination/Pagination';
-import SearchProducts from '../../../components/SearchProducts/SearchProducts';
-import { NavLink } from 'react-router-dom';
+import useProductsStatista from '@hooks/products/useProductsStatista';
+
+import CategoryFilter from '@components/Catalog/CategoryFilter/CategoryFilter';
+import AdminProductsGrid from '@components/Admin/AdminProductsGrid/AdminProductsGrid';
+import Pagination from '@components/Pagination/Pagination';
+import SearchProducts from '@components/SearchProducts/SearchProducts';
+import LoaderComponent from '@components/Loader/LoaderComponent';
 
 const AdminHome = () => {
     const { data, loading, error } = useProductsStatista();
@@ -17,7 +20,7 @@ const AdminHome = () => {
     const [searchFilter, setSearchFilter] = useState('');
 
     if (loading)
-        return <p>Завантаження...</p>
+        return <LoaderComponent />
 
     if (error)
         return <p>Помилка завантаження статистики</p>
@@ -46,7 +49,7 @@ const AdminHome = () => {
 
     return (
         <div className={styles.adminHome}>
-            <NavLink className={styles.addNewProductButton} to='create/'>Додати новий товар</NavLink>
+            <NavLink className={styles.addNewProductButton} to='/admin/create/'>Додати новий товар</NavLink>
 
             <div className={styles.statista}>
                 {statistaBlocks?.map((s, index) => (

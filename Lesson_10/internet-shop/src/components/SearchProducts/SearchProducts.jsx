@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './SearchProducts.module.scss';
-import useDebounce from '../../hooks/useDebounce';
+import useDebounce from '@hooks/useDebounce';
 
 const SearchProducts = ({ setSearchFilter, setPage }) => {
     const [search, setSearch] = useState('');

@@ -1,9 +1,10 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import styles from './LoginForm.module.scss';
-import useAuth from '../../hooks/useAuth';
+import useAuth from '@hooks/useAuth';
 import { useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
+import LoaderComponent from '@components/Loader/LoaderComponent';
 
 function useLogin() {
     const { login } = useAuth();
@@ -12,18 +13,19 @@ function useLogin() {
 
     const loginMutation = useMutation({
         mutationFn: async ({email, password}) => {
-            await login(email, password)
+            return toast.promise(login(email, password), {
+                loading: 'Авторизація...',
+                success: 'Успішна авторизація!',
+                error: (err) => err.response.data.error || 'Invalid credentials!'
+            });
         },
         onSuccess: async() => {
             await queryClient.refetchQueries({ queryKey: ['me'] });
-            toast.success('Успішна авторизація!');
+            
             navigate('/profile', {
                 replace: true
             });
         },
-        onError: (error) => {
-            toast.error(error.response.data.error || 'Invalid credentials!');
-        }
     });
 
     return {
@@ -59,7 +61,10 @@ const LoginForm = () => {
                 <input type="password" name="password" id="password" required value = {password} onChange={e => setPassword(e.target.value)} />
             </div>
 
-            <button className={styles.btnLogin} type='submit'>Увійти</button>
+            <button className={styles.btnLogin} type='submit'>
+                {isLoggingIn && <LoaderComponent size={15} />}
+                Увійти
+            </button>
             <NavLink className={styles.registerLink} to = '/register'>Зареєструватись</NavLink>
         </form>
     );

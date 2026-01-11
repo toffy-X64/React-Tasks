@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
-import useProducts from '../../../hooks/products/useProducts';
-import ProductCard from '../ProductCard/ProductCard';
+import useProducts from '@hooks/products/useProducts';
+import ProductCard from '@components/Catalog/ProductCard/ProductCard';
 import styles from './ProductsGrid.module.scss';
+import LoaderComponent from '@components/Loader/LoaderComponent';
 
 
 const ProductsGrid = ({ activeCategory, page, setTotalPages, searchFilter }) => {
@@ -13,7 +14,7 @@ const ProductsGrid = ({ activeCategory, page, setTotalPages, searchFilter }) => 
     }, [data, setTotalPages])
 
     if (loading) 
-        return <p>Завантаження...</p>
+        return <LoaderComponent />
 
     if (error)
         return <p>Сталася помилка при завантаженні товарів</p>

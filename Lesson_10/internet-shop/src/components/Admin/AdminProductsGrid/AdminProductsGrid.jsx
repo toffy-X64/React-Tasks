@@ -1,6 +1,7 @@
 import styles from './AdminProductsGrid.module.scss';
-import useProducts from '../../../hooks/products/useProducts';
-import AdminProductCard from '../AdminProductCard/AdminProductCard';
+import useProducts from '@hooks/products/useProducts';
+import AdminProductCard from '@components/Admin/AdminProductCard/AdminProductCard';
+import LoaderComponent from '@components/Loader/LoaderComponent';
 import { useEffect } from 'react';
 
 const AdminProductsGrid = ({ activeCategory, page, setTotalPages, searchFilter }) => {
@@ -12,7 +13,7 @@ const AdminProductsGrid = ({ activeCategory, page, setTotalPages, searchFilter }
     }, [data, setTotalPages]);
 
     if (loading)
-        return <p>Завантаження...</p>
+        return <LoaderComponent />
 
     if (error)
         return <p>Помилка завантаження товарів</p>
@@ -28,12 +29,7 @@ const AdminProductsGrid = ({ activeCategory, page, setTotalPages, searchFilter }
                     id = {p._id}
                     name = {p.name}
                     description = {p.description}
-                    price = {p.price}
-                    discount = {p.discount}
-                    stock = {p.stock}
                     image = {p.image}
-                    finalPrice = {p.finalPrice}
-                    inStock = {p.inStock}
                 />
             ) )}
         </div>

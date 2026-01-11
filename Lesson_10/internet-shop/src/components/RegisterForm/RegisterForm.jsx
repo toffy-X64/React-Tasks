@@ -1,9 +1,10 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth';
+import useAuth from '@hooks/useAuth';
 import styles from './RegisterForm.module.scss';
 import { useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
+import LoaderComponent from '@components/Loader/LoaderComponent';
 
 function useRegister() {
     const { register } = useAuth();
@@ -12,18 +13,18 @@ function useRegister() {
 
     const registerMutation = useMutation({
         mutationFn: async(data) => {
-            await register({...data});
+            return toast.promise(register({...data}), {
+                loading: 'Реєстрація...',
+                success: 'Успішна реєстрація!',
+                error: (err) => err.response.data.error || 'Server error!'
+            });
         },
         onSuccess: async () => {
             await queryClient.refetchQueries({ queryKey: ['me'] });
-            toast.success('Успішна реєстрація!');
             navigate('/profile', {
                 replace: true
             });
         },
-        onError: (error) => {
-            toast.error(error.response.data.error || 'Server error!');
-        }
     });
 
     return {
@@ -111,7 +112,10 @@ const RegisterForm = () => {
                 />
             </div>
 
-            <button className={styles.btnLogin} type='submit'>Зареєструватись</button>
+            <button className={styles.btnLogin} type='submit' disabled = {isInProcess}>
+                { isInProcess && <LoaderComponent size={15} /> }
+                Зареєструватись
+            </button>
             <NavLink className={styles.loginLink} to = '/login'>Увійти</NavLink>
         </form>
     );

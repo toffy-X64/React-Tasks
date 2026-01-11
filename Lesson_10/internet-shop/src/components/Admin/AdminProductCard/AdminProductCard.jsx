@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import styles from './AdminProductCard.module.scss';
-import useDeleteProduct from '../../../hooks/products/useDeleteProduct.js';
+import useDeleteProduct from '@hooks/products/useDeleteProduct.js';
 
-const AdminProductCard = ({ id, name, description, price, discount, stock, image, finalPrice, inStock }) => {
+const AdminProductCard = ({ id, name, description, image }) => {
     const deleteProductMutation = useDeleteProduct();
 
     const handleOnDelete = () => {
@@ -23,7 +23,7 @@ const AdminProductCard = ({ id, name, description, price, discount, stock, image
             </div>
 
             <div className={styles.cardActions}>
-                <NavLink to = {`edit/${id}`} className={styles.editButton}>Редагувати</NavLink>
+                <NavLink to = {`/admin/edit/${id}`} className={styles.editButton}>Редагувати</NavLink>
                 <button className={styles.deleteButton} onClick={handleOnDelete}>Видалити</button>
             </div>
         </div>

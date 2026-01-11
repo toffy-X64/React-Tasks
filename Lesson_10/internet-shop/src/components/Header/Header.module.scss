@@ -46,7 +46,8 @@
     align-items: center;
     gap: 0.5em;
 
-    &:hover {
+    &:hover,
+    &.active {
         color: $color-primary;
     }
 }

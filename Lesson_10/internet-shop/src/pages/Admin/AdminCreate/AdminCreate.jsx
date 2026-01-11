@@ -1,8 +1,11 @@
 import { useState } from 'react';
-import AdminProductForm from '../../../components/Admin/AdminProductForm/AdminProductForm';
-import useCategories from '../../../hooks/categories/useCategories';
+
 import styles from './AdminCreate.module.scss';
-import useAddProduct from '../../../hooks/products/useAddProduct';
+
+import useCategories from '@hooks/categories/useCategories';
+import useAddProduct from '@hooks/products/useAddProduct';
+
+import AdminProductForm from '@components/Admin/AdminProductForm/AdminProductForm';
 
 const AdminCreate = () => {
     const { categories, loading, error } = useCategories();

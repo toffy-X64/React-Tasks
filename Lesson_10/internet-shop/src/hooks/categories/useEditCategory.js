@@ -1,17 +1,18 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import toast from "react-hot-toast";
-import { productService } from "@api/services/productService";
 
-function useEditProduct() {
+import { categoryService } from '@api/services/categoryService'
+import toast from "react-hot-toast";
+
+function useEditCategory() {
     const queryClient = useQueryClient();
 
     return useMutation({
         mutationFn: async(data) => {
-            return await productService.editProduct(data._id, data);
+            return categoryService.update(data.id, data);
         },
         onSuccess: async () => {
-            await queryClient.invalidateQueries(['products']);
-            toast.success('Товар успішно оновлений!');
+            await queryClient.invalidateQueries(['categories']);
+            toast.success('Категорія успішно оновлена!');
         },
         onError: (error) => {
             toast.error(error.response.data.error || 'Server error!');
@@ -19,4 +20,4 @@ function useEditProduct() {
     });
 }
 
-export default useEditProduct;
+export default useEditCategory;

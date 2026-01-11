@@ -1,6 +1,6 @@
-import Header from "./components/Header/Header";
-import RouterView from './components/RouterView/RouterView';
-import Footer from './components/Footer/Footer';
+import Header from "@components/Header/Header";
+import RouterView from '@components/RouterView/RouterView';
+import Footer from '@components/Footer/Footer';
 
 import { Toaster } from "react-hot-toast";
 
@@ -12,9 +12,9 @@ const App = () => {
             <Footer/>
 
             <Toaster 
-                position="top-right"
+                position="bottom-right"
                 toastOptions={{
-                    duration: 1500,
+                    duration: 1900,
                     success: {
                         icon: null,
                         style: {
@@ -26,13 +26,6 @@ const App = () => {
                         icon: null,
                         style: {
                             background: '#dc2626',
-                            color: '#fff',
-                        },
-                    },
-                    loading: {
-                        icon: null,
-                        style: {
-                            background: '#2563eb',
                             color: '#fff',
                         },
                     },

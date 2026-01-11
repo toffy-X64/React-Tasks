@@ -1,5 +1,5 @@
 import styles from './Profile.module.scss';
-import useAuth from '../../hooks/useAuth';
+import useAuth from '@hooks/useAuth';
 
 const rolesDescription = {
     customer: 'Ви можете переглядати каталог та додавати товари в кошик',

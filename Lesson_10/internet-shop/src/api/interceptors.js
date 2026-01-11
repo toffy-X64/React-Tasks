@@ -1,5 +1,3 @@
-import axios from "axios";
-
 export const confgureInterceptors = (apiInstance) => {
     apiInstance.interceptors.request.use(
         (config) => {
@@ -28,7 +26,6 @@ export const confgureInterceptors = (apiInstance) => {
                 localStorage.setItem('access-token', JSON.stringify(responseData.accessToken) );
                 return apiInstance(error.config);
             }
- 
 
             if (error.response) {
                 console.warn(`Response error with status code ${error.response.status}: `, error.response.data);

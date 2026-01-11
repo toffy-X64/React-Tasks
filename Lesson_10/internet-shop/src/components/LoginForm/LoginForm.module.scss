@@ -43,6 +43,11 @@
   cursor: pointer;
   transition: background-color 0.2s ease;
 
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+  justify-content: center;
+
   &:hover {
     background-color: $color-primary-hover;
   }

@@ -1,8 +1,9 @@
 import styles from './Register.module.scss';
 
-import RegisterForm from '../../components/RegisterForm/RegisterForm';
-import useAuth from '../../hooks/useAuth';
-import Loader from '../../components/Loader/Loader';
+import useAuth from '@hooks/useAuth';
+
+import Loader from '@components/Loader/Loader';
+import RegisterForm from '@components/RegisterForm/RegisterForm';
 
 const Register = () => {
     const {loading} = useAuth();

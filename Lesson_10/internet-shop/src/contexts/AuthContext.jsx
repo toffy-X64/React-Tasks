@@ -1,8 +1,7 @@
-import { createContext, useEffect, useState } from 'react';
-import useLocalStorage from '../hooks/useLocalStorage';
+import { createContext } from 'react';
 
-import { userService } from '../api/services/userService';
-import { authService } from '../api/services/authService';
+import { userService } from '@api/services/userService';
+import { authService } from '@api/services/authService';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 export const AuthContext = createContext(null);

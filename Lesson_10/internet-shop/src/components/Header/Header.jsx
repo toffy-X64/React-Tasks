@@ -1,8 +1,9 @@
 import styles from './Header.module.scss';
-import { navRoutes } from '../RouterView/routes';
+import { navRoutes } from '@components/RouterView/routes';
 import { NavLink } from 'react-router-dom';
 
-import useAuth from '../../hooks/useAuth';
+import useAuth from '@hooks/useAuth';
+import clsx from 'clsx';
 
 const Header = () => {
     const { isAuthenticated, user } = useAuth();
@@ -34,7 +35,9 @@ const Header = () => {
                         <NavLink
                             key = {index}
                             to={route.link}
-                            className={styles.navLink}
+                            className={ ( {isActive} ) => clsx(styles.navLink, {
+                                [styles.active]: isActive
+                            }) }
                         >
                             {route.icon}
                             {route.title}

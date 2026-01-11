@@ -6,8 +6,7 @@ import { StrictMode } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter } from 'react-router-dom';
 
-import { AuthProvider } from './contexts/AuthContext.jsx'; 
-
+import { AuthProvider } from '@contexts/AuthContext.jsx'; 
 import App from './App.jsx';
 
 const queryClient = new QueryClient();

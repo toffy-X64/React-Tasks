@@ -1,0 +1,23 @@
+.adminWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.addNewCategoryButton {
+    display: block;
+    text-align: center;
+    padding: 8px 14px;
+    border-radius: 8px;
+    background: #3b82f6;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    transition: 0.2s;
+
+    margin-bottom: 1em;
+
+    &:hover {
+        background: #2563eb;
+    }
+}

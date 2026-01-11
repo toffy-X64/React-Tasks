@@ -1,4 +1,5 @@
-import useCategories from '../../../hooks/categories/useCategories';
+import useCategories from '@hooks/categories/useCategories';
+import LoaderComponent from '@components/Loader/LoaderComponent';
 import styles from './CategoryFilter.module.scss';
 
 import clsx from 'clsx';
@@ -12,7 +13,7 @@ const CategoryFilter = ({activeCategory, setCategory, setPage = null}) => {
     };
 
     if (loading) 
-        return <p>Завантаження...</p>
+        return <LoaderComponent />
 
     if (error || !categories.length)
         return <p>Сталася помилка при завантаженні категорій</p>
