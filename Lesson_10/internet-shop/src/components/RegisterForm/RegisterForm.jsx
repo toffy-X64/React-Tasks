@@ -16,7 +16,12 @@ function useRegister() {
             return toast.promise(register({...data}), {
                 loading: 'Реєстрація...',
                 success: 'Успішна реєстрація!',
-                error: (err) => err.response.data.error || 'Server error!'
+                error: (err) => {
+                    if (err && err.response && err.data)
+                        return err.response.data?.error || 'Invalid data provided!';
+
+                    return 'Error during register('
+                }
             });
         },
         onSuccess: async () => {

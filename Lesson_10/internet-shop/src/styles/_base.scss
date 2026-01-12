@@ -11,6 +11,10 @@ body {
     font-family: 'Consolas';
 }
 
+body.locked {
+    overflow: hidden;
+}
+
 .app {
     @include flex-center;
     

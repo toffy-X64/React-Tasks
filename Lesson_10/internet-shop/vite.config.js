@@ -10,7 +10,8 @@ export default defineConfig({
             '@hooks': '/src/hooks',
             '@pages': '/src/pages',
             '@contexts': '/src/contexts',
-            '@api': '/src/api'
+            '@api': '/src/api',
+            '@stores': '/src/stores'
         }
     }
 });

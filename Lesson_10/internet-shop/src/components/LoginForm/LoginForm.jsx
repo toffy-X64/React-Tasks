@@ -16,7 +16,12 @@ function useLogin() {
             return toast.promise(login(email, password), {
                 loading: 'Авторизація...',
                 success: 'Успішна авторизація!',
-                error: (err) => err.response.data.error || 'Invalid credentials!'
+                error: (err) => {
+                    if (err && err.response && err.data)
+                        return err.response.data?.error || 'Invalid credentials!';
+
+                    return 'Error during login('
+                }
             });
         },
         onSuccess: async() => {

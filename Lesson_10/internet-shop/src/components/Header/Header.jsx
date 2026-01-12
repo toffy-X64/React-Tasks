@@ -4,9 +4,18 @@ import { NavLink } from 'react-router-dom';
 
 import useAuth from '@hooks/useAuth';
 import clsx from 'clsx';
+import { useCart } from '@contexts/CartContext';
 
 const Header = () => {
     const { isAuthenticated, user } = useAuth();
+
+    const cart = useCart();
+
+    const handleOnCustomClick = (action) => {
+        if (action == 'cart') {
+            cart.open();
+        }
+    };
 
     const canShow = (route) => {
         if (!route.protected)
@@ -24,24 +33,43 @@ const Header = () => {
         return false;
     };
 
+    const renderRoute = (route, index) => {
+        if (!canShow(route))
+            return;
+
+        if (route.custom)
+            return (
+                <p
+                    key = {index}
+                    className={styles.navLink}
+                    onClick={e => handleOnCustomClick(route.custom)}
+                >
+                    {route.icon}
+                    {route.title}
+                </p>
+            );
+        
+        return (
+            <NavLink
+                key={index}
+                to = {route.link}
+                className={ ( {isActive} ) => clsx(styles.navLink, {
+                    [styles.active]: isActive
+                }) }
+            >
+                {route.icon}
+                {route.title}
+            </NavLink>
+        );
+    };
+
     return (
         <header className={styles.header}>
             <div className={styles.headerContainer}>
                 <h1 className={styles.logo}>SportStore</h1>
                 <nav className={styles.navLinks}>
                     {navRoutes?.map( (route, index) => (
-                        canShow(route) 
-                        &&
-                        <NavLink
-                            key = {index}
-                            to={route.link}
-                            className={ ( {isActive} ) => clsx(styles.navLink, {
-                                [styles.active]: isActive
-                            }) }
-                        >
-                            {route.icon}
-                            {route.title}
-                        </NavLink>
+                        renderRoute(route, index)
                     ) )}
                 </nav>
             </div>

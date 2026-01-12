@@ -27,7 +27,7 @@ export const navRoutes = [
     {
         icon: <ShoppingCart />,
         title: 'Кошик',
-        link: '/cart',
+        custom: 'cart',
         protected: {
             requireAuth: true
         }
