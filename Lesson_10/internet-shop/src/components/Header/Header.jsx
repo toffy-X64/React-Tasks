@@ -1,19 +1,18 @@
 import styles from './Header.module.scss';
 import { navRoutes } from '@components/RouterView/routes';
 import { NavLink } from 'react-router-dom';
+import clsx from 'clsx';
 
 import useAuth from '@hooks/useAuth';
-import clsx from 'clsx';
-import { useCart } from '@contexts/CartContext';
+import useCart from '@hooks/useCart';
 
 const Header = () => {
     const { isAuthenticated, user } = useAuth();
-
-    const cart = useCart();
+    const { open } = useCart();
 
     const handleOnCustomClick = (action) => {
         if (action == 'cart') {
-            cart.open();
+            open();
         }
     };
 

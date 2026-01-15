@@ -1,6 +1,10 @@
+import toast from 'react-hot-toast';
 import styles from './ProductCard.module.scss';
 
-const ProductCard = ({
+import useCart from '@hooks/useCart';
+
+const ProductCard = ({ product }) => {
+    const {id,
     name,
     description,
     price,
@@ -8,8 +12,15 @@ const ProductCard = ({
     stock,
     image,
     finalPrice,
-    inStock
-}) => {
+    inStock} = product;
+
+    const { add } = useCart();
+
+    const handleOnClickAddToCart = () => {
+        add(product);
+        toast.success('Товар додано в кошик');
+    };
+
     return (
         <div className={styles.card}>
             <div className={styles.imageWrapper}>
@@ -41,8 +52,9 @@ const ProductCard = ({
                 <button
                     className={styles.button}
                     disabled={!inStock}
+                    onClick={handleOnClickAddToCart}
                 >
-                    Купити
+                    В кошик
                 </button>
             </div>
         </div>

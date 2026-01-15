@@ -7,7 +7,9 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter } from 'react-router-dom';
 
 import { AuthProvider } from '@contexts/AuthContext.jsx'; 
-import { CartProvider } from '@contexts/CartContext.jsx';
+
+import { Provider } from 'react-redux';
+import { store } from '@store/store';
 
 import App from './App.jsx';
 
@@ -18,9 +20,9 @@ createRoot(document.getElementById('root')).render(
         <QueryClientProvider client={queryClient}>
             <BrowserRouter>
                 <AuthProvider>
-                    <CartProvider>
+                    <Provider store={store}>
                         <App />
-                    </CartProvider>
+                    </Provider>
                 </AuthProvider>
             </BrowserRouter>
         </QueryClientProvider>

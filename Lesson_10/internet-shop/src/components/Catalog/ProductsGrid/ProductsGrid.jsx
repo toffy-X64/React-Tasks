@@ -27,14 +27,7 @@ const ProductsGrid = ({ activeCategory, page, setTotalPages, searchFilter }) => 
             {data.products?.map(p => (
                 <ProductCard
                     key = {p._id}
-                    name = {p.name}
-                    description = {p.description}
-                    price = {p.price}
-                    discount = {p.discount}
-                    stock = {p.stock}
-                    image = {p.image}
-                    finalPrice = {p.finalPrice}
-                    inStock = {p.inStock}
+                    product = {p}
                 />
             ))}
         </div>

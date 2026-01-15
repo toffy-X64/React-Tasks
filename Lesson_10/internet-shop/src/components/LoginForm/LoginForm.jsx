@@ -17,7 +17,7 @@ function useLogin() {
                 loading: 'Авторизація...',
                 success: 'Успішна авторизація!',
                 error: (err) => {
-                    if (err && err.response && err.data)
+                    if (err && err.response && err.response.data)
                         return err.response.data?.error || 'Invalid credentials!';
 
                     return 'Error during login('

@@ -11,7 +11,8 @@ export default defineConfig({
             '@pages': '/src/pages',
             '@contexts': '/src/contexts',
             '@api': '/src/api',
-            '@stores': '/src/stores'
+            '@stores': '/src/stores',
+            '@store': '/src/store'
         }
     }
 });

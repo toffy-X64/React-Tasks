@@ -44,5 +44,6 @@ router.patch('/cart/items/:productId', protect, cartController.updateCartItem);
 router.delete('/cart/items/:productId', protect, cartController.removeFromCart);
 router.delete('/cart', protect, cartController.clearCart);
 router.post('/cart/sync', protect, cartController.syncCart);
+router.post('/cart/format', cartController.formatCart);
 
 export default router;

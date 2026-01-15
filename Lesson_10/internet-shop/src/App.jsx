@@ -2,7 +2,11 @@ import Header from "@components/Header/Header";
 import RouterView from '@components/RouterView/RouterView';
 import Footer from '@components/Footer/Footer';
 
+import CartSync from '@components/Cart/CartSync';
+import CartModal from "@components/Cart/CartModal";
+
 import { Toaster } from "react-hot-toast";
+
 
 const App = () => {
     return (
@@ -31,6 +35,9 @@ const App = () => {
                     },
                 }}
             />
+
+            <CartModal />
+            <CartSync />
         </div>
     );
 }

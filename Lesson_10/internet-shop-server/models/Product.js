@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import mongooseLeanVirtuals from 'mongoose-lean-virtuals';
 
 const ProductSchema = new mongoose.Schema(
   {
@@ -76,6 +77,7 @@ ProductSchema.virtual('inStock').get(function () {
 
 // Індекс для пошуку по назві та опису
 ProductSchema.index({ name: 'text', description: 'text' });
+ProductSchema.plugin(mongooseLeanVirtuals);
 
 const Product = mongoose.model('Product', ProductSchema);
 
