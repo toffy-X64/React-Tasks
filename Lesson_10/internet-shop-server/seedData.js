@@ -10,7 +10,7 @@ dotenv.config();
 const seedUsers = [
   {
     email: 'admin@shop.com',
-    password: 'admin123',
+    password: 'qwe123qwe',
     fullName: 'Адміністратор',
     phone: '+380501234567',
     address: 'Київ, вул. Хрещатик, 1',
@@ -103,13 +103,13 @@ const seedData = async () => {
     console.log(`Створено ${products.length} товарів`);
 
     console.log(`
-      SEED УСПІШНО ЗАВЕРШЕНО!                           
-      Користувачі:                                      
-      admin@shop.com / admin123 (admin)                
-      customer@shop.com / customer123 (customer)       
-                                                       
-      Категорії: ${categories.length}                                     
-      Товари: ${products.length}                                        
+      SEED УСПІШНО ЗАВЕРШЕНО!
+      Користувачі:
+      admin@shop.com / admin123 (admin)
+      customer@shop.com / customer123 (customer)
+
+      Категорії: ${categories.length}
+      Товари: ${products.length}
     `);
 
     process.exit(0);
