@@ -53,10 +53,16 @@ function useCart() {
         return total;
     }
 
+    const calcutalTotalItemsCount = () => {
+        const total = cart.items.reduce( (sum, item) => sum + item.quantity, 0 );
+        return total;
+    };
+
     return {
         items: cart.items,
         isOpen,
         calculateTotal,
+        calcutalTotalItemsCount,
         add,
         decrement,
         clear,

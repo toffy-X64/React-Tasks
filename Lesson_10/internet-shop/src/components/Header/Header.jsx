@@ -8,7 +8,9 @@ import useCart from '@hooks/useCart';
 
 const Header = () => {
     const { isAuthenticated, user } = useAuth();
-    const { open } = useCart();
+    const { open, calcutalTotalItemsCount } = useCart();
+
+    const totalItems = calcutalTotalItemsCount();
 
     const handleOnCustomClick = (action) => {
         if (action == 'cart') {
@@ -44,7 +46,7 @@ const Header = () => {
                     onClick={e => handleOnCustomClick(route.custom)}
                 >
                     {route.icon}
-                    {route.title}
+                    {route.custom == 'cart' ? route.title + `(${totalItems})` : route.title }
                 </p>
             );
         
