@@ -7,14 +7,18 @@ function useDeleteProduct() {
 
     return useMutation({
         mutationFn: async(id) => {
-            return await productService.deleteProduct(id);
+            return toast.promise(productService.deleteProduct(id), {
+                loading: 'Завантаження...',
+                success: 'Товар успішно видалено!',
+                error: async(err) => {
+                    if (err && err.response && err.response.data)
+                        return err.response.data?.error || 'Server error!';
+                    return 'Server error('
+                }
+            });
         },
         onSuccess: async() => {
             await queryClient.invalidateQueries(['products']);
-            toast.success('Товар успішно видалено!');
-        },
-        onError: (error) => {
-            toast.error(error.response.data.error || 'Server error!');
         }
     });
 }

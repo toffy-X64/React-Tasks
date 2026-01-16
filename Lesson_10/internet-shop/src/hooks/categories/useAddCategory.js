@@ -9,14 +9,18 @@ function useAddCategory() {
 
     return useMutation({
         mutationFn: async(data) => {
-            return await categoryService.create(data);
+            return toast.promise( categoryService.create(data), {
+                loading: 'Завантаження...',
+                success: 'Категорія успішно створена!',
+                error: async(err) => {
+                    if (err && err.response && err.response.data)
+                        return err.response.data?.error || 'Server error!';
+                    return 'Server error('
+                }
+            } );
         },
         onSuccess: async () => {
             await queryClient.invalidateQueries(['categories']);
-            toast.success('Категорія успішно створена!');
-        },
-        onError: (error) => {
-            toast.error(error.response.data.error || 'Server error!');
         }
     });
 }

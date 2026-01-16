@@ -8,14 +8,18 @@ function useEditCategory() {
 
     return useMutation({
         mutationFn: async(data) => {
-            return categoryService.update(data.id, data);
+            return toast.promise(categoryService.update(data.id, data), {
+                loading: 'Завантаження...',
+                success: 'Категорія успішно оновлена!',
+                error: async(err) => {
+                    if (err && err.response && err.response.data)
+                        return err.response.data?.error || 'Server error!';
+                    return 'Server error('
+                }
+            });
         },
         onSuccess: async () => {
             await queryClient.invalidateQueries(['categories']);
-            toast.success('Категорія успішно оновлена!');
-        },
-        onError: (error) => {
-            toast.error(error.response.data.error || 'Server error!');
         }
     });
 }

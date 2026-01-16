@@ -12,20 +12,21 @@ function useAddOrder() {
 
     return useMutation({
         mutationFn: async(data) => {
-            return await orderService.order(data);
+            return toast.promise( orderService.order(data), {
+                loading: 'Завантаження...',
+                success: 'Замовлення успішно створено!',
+                error: async (err) => {
+                    if (err && err.response && err.response.data)
+                        return err.response.data?.error || 'Server error!';
+                    return 'Server error('
+                }
+            } );
         },
         onSuccess: async() => {
-            toast.success('Замовлення успішно створено!');
             await queryClient.invalidateQueries(['orders']);
 
             clear();
             navigate('/checkout/success');
-        },
-        onError: async(err) => {
-            if (err && err.response && err.response.data)
-                toast.error(err.response.data?.error || 'Server error!');
-
-            toast.error('Server error!');
         }
     });
 }

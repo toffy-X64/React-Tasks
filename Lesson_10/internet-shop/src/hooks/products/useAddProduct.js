@@ -7,14 +7,18 @@ function useAddProduct() {
 
     return useMutation({
         mutationFn: async(data) => {
-            return await productService.addProduct(data);
+            return toast.promise( productService.addProduct(data), {
+                loading: 'Завантаження...',
+                success: 'Товар успішно створений!',
+                error: async(err) => {
+                    if (err && err.response && err.response.data)
+                        return err.response.data?.error || 'Server error!';
+                    return 'Server error('
+                }
+            } );
         },
         onSuccess: async () => {
             await queryClient.invalidateQueries(['products']);
-            toast.success('Товар успішно створений!');
-        },
-        onError: (error) => {
-            toast.error(error.response.data.error || 'Server error!');
         }
     });
 }

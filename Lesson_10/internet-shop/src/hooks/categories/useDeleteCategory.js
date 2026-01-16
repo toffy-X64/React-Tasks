@@ -8,14 +8,18 @@ function useDeleteCategory() {
 
     return useMutation({
         mutationFn: async(id) => {
-            return await categoryService.delete(id);
+            return toast.promise( categoryService.delete(id), {
+                loading: 'Завантаження...',
+                success: 'Категорію успішно видалено!',
+                error: async(err) => {
+                    if (err && err.response && err.response.data)
+                        return err.response.data?.error || 'Server error!';
+                    return 'Server error('
+                }
+            } );
         },
         onSuccess: async() => {
             await queryClient.invalidateQueries(['categories']);
-            toast.success('Категорію успішно видалено!');
-        },
-        onError: async(error) => {
-            toast.error(error.response.data.error || 'Server error!');
         }
     });
 }
