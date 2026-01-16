@@ -4,6 +4,7 @@ import styles from './AdminOrders.module.scss';
 import LoaderComponent from '@components/Loader/LoaderComponent';
 import useUpdateOrderStatus from '@hooks/orders/useUpdateOrderStatus';
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const AdminOrders = () => {
     const [filter, setFilter] = useState('all');
@@ -70,7 +71,7 @@ const AdminOrders = () => {
                             <div className={styles.items}>
                                 {order.items.map((item, index) => (
                                     <div className={styles.item} key={index}>
-                                        <span>{item.product.name}</span>
+                                        <NavLink to={`/product/${item.product.id}`}>{item.product.name}</NavLink>
                                         <span>
                                             {item.quantity} × ${item.product.finalPrice}
                                         </span>

@@ -8,7 +8,7 @@ function useOrders(status = 'all') {
         },
         queryKey: ['orders', status],
         retry: false,
-        staleTime: 1 * 60 * 1000
+        staleTime: 30 * 1000
     });
 
     return {
