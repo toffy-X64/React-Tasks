@@ -11,6 +11,7 @@ import Login from "@pages/Login/Login";
 import Register from "@pages/Register/Register";
 import Profile from "@pages/Profile/Profile";
 import Checkout from "@pages/Checkout/Checkout";
+import CheckoutSuccess from "@pages/Checkout/CheckoutSuccess";
 import Product from "@pages/Product/Product";
 
 import AdminLayout from '@pages/Admin/AdminLayout';
@@ -21,6 +22,7 @@ import AdminCategories from "@pages/Admin/AdminCategories/AdminCategories";
 import AdminOrders from "@pages/Admin/AdminOrders/AdminOrders";
 import AdminCreateCategory from "@pages/Admin/AdminCategories/AdminCreateCategory";
 import AdminEditCategory from "@pages/Admin/AdminCategories/AdminEditCategory";
+
 
 const ProtectedRoute = ({children, protectionSettings}) => {
     const { user, loading, isAuthenticated } = useAuth();
@@ -61,6 +63,7 @@ const RouterView = () => {
             <Route path = '/register' element = { <Register /> } />
             <Route path = '/product/:id' element = { <Product /> } />
             <Route path = '/checkout' element = { <Checkout /> } />
+            <Route path = '/checkout/success' element = { <CheckoutSuccess /> } />
             <Route path = '/logout' element = { 
                 <ProtectedRoute protectionSettings={{ requireAuth: true }}>
                     <LogoutRoute />

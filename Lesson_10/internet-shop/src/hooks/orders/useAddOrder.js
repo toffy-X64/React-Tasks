@@ -19,7 +19,7 @@ function useAddOrder() {
             await queryClient.invalidateQueries(['orders']);
 
             clear();
-            navigate('/');
+            navigate('/checkout/success');
         },
         onError: async(err) => {
             if (err && err.response && err.response.data)
