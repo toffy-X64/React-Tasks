@@ -21,7 +21,7 @@ const CartItem = ({ product, quantity }) => {
 
             <div className={styles.info}>
                 <p className={styles.name}>{name}</p>
-                <p className={styles.unitPrice}>${finalPrice}</p>
+                <p className={styles.unitPrice}>₴{finalPrice}</p>
 
                 <div className={styles.controls}>
                     <button onClick={onMinus}>-</button>
@@ -31,7 +31,7 @@ const CartItem = ({ product, quantity }) => {
             </div>
 
             <div className={styles.total}>
-                ${finalPrice * quantity}
+                ₴{finalPrice * quantity}
             </div>
         </div>
     );

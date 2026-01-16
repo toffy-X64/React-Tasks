@@ -5,17 +5,24 @@ import useCart from "@hooks/useCart";
 import CartItem from './CartItem';
 import { useSelector } from 'react-redux';
 import { selectCartTotal } from '@store/cart/cartSelectors';
+import { useNavigate } from 'react-router-dom';
 
 const CartModal = () => {
     const { isOpen, close, items, clear } = useCart();
     const total = useSelector( selectCartTotal );
     const modalRef = useRef();
 
+    const navigate = useNavigate();
+
     const handleOnAreaClick = (e) => {
         if (e.target == modalRef.current) {
             close();
         }
     };
+
+    const onCheckoutClick = (e) => {
+        navigate('/checkout');
+    }
 
     const onClear = () => {
         clear();
@@ -52,12 +59,13 @@ const CartModal = () => {
                 <div className={styles.footer}>
                     <div className={styles.total}>
                         <span>Total:</span>
-                        <strong>${total}</strong>
+                        <strong>₴{total}</strong>
                     </div>
 
                     <button
                         className={styles.checkout}
                         disabled={items.length === 0}
+                        onClick={onCheckoutClick}
                     >
                         Перейти до замовлення
                     </button>

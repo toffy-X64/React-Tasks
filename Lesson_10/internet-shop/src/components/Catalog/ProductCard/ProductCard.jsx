@@ -2,19 +2,31 @@ import toast from 'react-hot-toast';
 import styles from './ProductCard.module.scss';
 
 import useCart from '@hooks/useCart';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useRef } from 'react';
 
 const ProductCard = ({ product }) => {
-    const {id,
-    name,
-    description,
-    price,
-    discount,
-    stock,
-    image,
-    finalPrice,
-    inStock} = product;
-
+    const navigate = useNavigate();
+    const buttonRef = useRef(null);
     const { add } = useCart();
+
+    const {
+        id,
+        name,
+        description,
+        price,
+        discount,
+        stock,
+        image,
+        finalPrice,
+        inStock
+    } = product;
+
+    const onCardClick = (e) => {
+        if (e.target != buttonRef.current) {
+            navigate(`/product/${id}`)
+        }
+    };
 
     const handleOnClickAddToCart = () => {
         add(product);
@@ -22,13 +34,13 @@ const ProductCard = ({ product }) => {
     };
 
     return (
-        <div className={styles.card}>
-            <div className={styles.imageWrapper}>
-                {discount > 0 && (
-                <span className={styles.discount}>-{discount}%</span>
-                )}
-            <img src={image} alt={name} />
-        </div>
+        <div className={styles.card} to={`/product/${id}`} onClick={onCardClick}>
+                <div className={styles.imageWrapper}>
+                    {discount > 0 && (
+                        <span className={styles.discount}>-{discount}%</span>
+                    )}
+                <img src={image} alt={name} />
+            </div>
 
         <div className={styles.content}>
             <h3 className={styles.title}>{name}</h3>
@@ -53,6 +65,7 @@ const ProductCard = ({ product }) => {
                     className={styles.button}
                     disabled={!inStock}
                     onClick={handleOnClickAddToCart}
+                    ref={buttonRef}
                 >
                     В кошик
                 </button>

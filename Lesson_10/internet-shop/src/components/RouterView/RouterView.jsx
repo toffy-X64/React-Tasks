@@ -10,6 +10,9 @@ import NotFound from "@pages/NotFound/NotFound";
 import Login from "@pages/Login/Login";
 import Register from "@pages/Register/Register";
 import Profile from "@pages/Profile/Profile";
+import Checkout from "@pages/Checkout/Checkout";
+import Product from "@pages/Product/Product";
+
 import AdminLayout from '@pages/Admin/AdminLayout';
 import AdminHome from "@pages/Admin/AdminHome/AdminHome";
 import AdminEdit from "@pages/Admin/AdminEdit/AdminEdit";
@@ -56,6 +59,8 @@ const RouterView = () => {
             <Route path = '/' element = { <Catalog /> } />
             <Route path = '/login' element = { <Login /> } />
             <Route path = '/register' element = { <Register /> } />
+            <Route path = '/product/:id' element = { <Product /> } />
+            <Route path = '/checkout' element = { <Checkout /> } />
             <Route path = '/logout' element = { 
                 <ProtectedRoute protectionSettings={{ requireAuth: true }}>
                     <LogoutRoute />

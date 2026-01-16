@@ -1,0 +1,121 @@
+.orders {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.order {
+  background: #fff;
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 24px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.customer {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #777;
+}
+
+.meta {
+  font-size: 13px;
+  color: #777;
+}
+
+.status {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.new {
+  background: #e6f0ff;
+  color: #1a4fff;
+}
+
+.confirmed {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.assembled {
+  background: #ede7f6;
+  color: #5e35b1;
+}
+
+.shipped {
+  background: #e0f7fa;
+  color: #0277bd;
+}
+
+.delivered {
+  background: #e6f8ed;
+  color: #1f9254;
+}
+
+.cancelled {
+  background: #fdecea;
+  color: #d93025;
+}
+
+
+.items {
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  padding: 16px 0;
+  margin-bottom: 16px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  padding: 6px 0;
+
+  span:first-child {
+    font-weight: 500;
+  }
+
+  span:last-child {
+    color: #555;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment {
+  font-size: 13px;
+  color: #777;
+  max-width: 70%;
+}
+
+.total {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.filter {
+    margin-bottom: 1em;
+}

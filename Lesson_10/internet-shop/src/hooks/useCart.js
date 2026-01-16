@@ -48,9 +48,15 @@ function useCart() {
         }
     };
 
+    const calculateTotal = () => {    
+        const total = cart.items.reduce( (sum, item) => sum + item.product.finalPrice * item.quantity, 0 );
+        return total;
+    }
+
     return {
         items: cart.items,
         isOpen,
+        calculateTotal,
         add,
         decrement,
         clear,

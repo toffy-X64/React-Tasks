@@ -5,6 +5,7 @@ import useAuth from '@hooks/useAuth';
 import useCart from "@hooks/useCart";
 
 import { fetchCart, formatCartAsync, syncCartAsync } from "@store/cart/cartThunks";
+import { resetCart } from "@store/cart/cartSlice";
 
 const syncWithLocal = (cartItems) => {
     let items = cartItems.map(e => {
@@ -43,6 +44,8 @@ const CartSync = () => {
             const saved = localStorage.getItem('cart-items');
             if (saved && saved != 'undefined') {
                 dispatch( formatCartAsync( JSON.parse(saved) ) );
+            } else {
+                dispatch( resetCart() );
             }
             didHybrated.current = true;
         }

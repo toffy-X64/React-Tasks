@@ -1,5 +1,6 @@
 import Order from '../models/Order.js';
 import Cart from '../models/Cart.js';
+import Product from '../models/Product.js';
 
 // POST /api/orders - Створити замовлення
 export const createOrder = async (req, res, next) => {
@@ -12,11 +13,34 @@ export const createOrder = async (req, res, next) => {
     }
 
     // Розрахунок загальної суми
-    const totalAmount = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    // const totalAmount = items.reduce((sum, item) => sum + (item.product.finalPrice * item.quantity), 0);
+
+    const productIds = items.map(item => item.product.id);
+    const products = await Product.find({
+        _id: { $in: productIds }
+    }).lean({ virtuals: true });
+
+    const productsMap = new Map(
+      products.map(p => [p._id.toString(), p])
+    );
+
+    const totalAmount = items.reduce((sum, item) => {
+        const product = productsMap.get(item.product.id);
+        return sum + (product.finalPrice * item.quantity)
+    }, 0);
+
+
+    const finalItems = items.map(item => {
+        return {
+            product: item.product.id,
+            price: item.product.finalPrice,
+            quantity: item.quantity
+        }
+    })
 
     const orderData = {
       user: userId,
-      items,
+      items: finalItems,
       totalAmount,
       comment: comment || '',
       status: 'new'
@@ -64,7 +88,7 @@ export const getOrders = async (req, res, next) => {
 
     const orders = await Order.find(filter)
       .populate('items.product')
-      .populate('user', 'email fullName')
+      .populate('user', 'address phone email fullName')
       .sort({ createdAt: -1 });
 
     res.json(orders);
@@ -78,7 +102,7 @@ export const getOrderById = async (req, res, next) => {
   try {
     const order = await Order.findById(req.params.id)
       .populate('items.product')
-      .populate('user', 'email fullName');
+      .populate('user', 'address phone email fullName');
 
     if (!order) {
       return res.status(404).json({ error: 'Замовлення не знайдено' });

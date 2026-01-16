@@ -37,6 +37,32 @@ export const protect = async (req, res, next) => {
   }
 };
 
+export const partiallyProtected = async(req, res, next) => {
+    try {
+        const authHeader = req.headers.authorization;
+        if (!authHeader || !authHeader.startsWith('Bearer ')) {
+            return next();
+        }
+
+        const token = authHeader.split(' ')[1];
+        const decoded = verifyAccessToken(token);
+        if (!decoded) {
+            return next();
+        }
+
+
+        const user = await User.findById(decoded.id).select('-password -refreshToken');
+        if(!user) {
+            return next();
+        }
+
+        req.user = user;
+        next();
+    } catch(err) {
+        next();
+    }
+}
+
 /**
  * Middleware для перевірки ролі Admin
  */
