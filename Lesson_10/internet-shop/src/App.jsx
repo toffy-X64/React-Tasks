@@ -6,9 +6,14 @@ import CartSync from '@components/Cart/CartSync';
 import CartModal from "@components/Cart/CartModal";
 
 import { Toaster } from "react-hot-toast";
+import { useEffect } from "react";
 
 
 const App = () => {
+    useEffect(() => {
+        document.title = 'Sport shop';
+    }, []);
+
     return (
         <div className="app">
             <Header/>
