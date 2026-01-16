@@ -14,7 +14,7 @@ const AdminOrders = () => {
     if (isError) return <p>Помилка завантаження замовлень</p>
 
     const onStatusChange = (id, status) => {
-        updateOrderStatusMutation.mutateAsync({id: id, status: status});
+        updateOrderStatusMutation.mutateAsync({id: id, status: status})
     };
 
     return (
